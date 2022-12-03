@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using MvcE_ticket.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppDbcontext>(options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 var app = builder.Build();
 
